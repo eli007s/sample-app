@@ -295,7 +295,7 @@
 						$this->_init($stack['controller']['init']['start']);
 
 					$c = $stack['controller']['invoke'];
-echo '<pre>', print_r($stack, true), '</pre>';exit;
+
 					if (class_exists($c))
 					{
 						$c = new $c();
