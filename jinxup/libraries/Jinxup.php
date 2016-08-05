@@ -103,14 +103,17 @@
 
 		    $_route = array_values(array_filter(explode('/', $_SERVER['REQUEST_URI'])));
 
-            $_first  = $_route[0];
-            $_second = trim($root, '/');
+            if (count($_route) > 0) {
 
-            if ($_first == $_second) {
+                $_first  = $_route[0];
+                $_second = trim($root, '/');
 
-                unset($_route[0]);
+                if ($_first == $_second) {
 
-                $_SERVER['REQUEST_URI'] = count($_route) > 0 ? implode('/', $_route) : '/';
+                    unset($_route[0]);
+
+                    $_SERVER['REQUEST_URI'] = count($_route) > 0 ? implode('/', $_route) : '/';
+                }
             }
 
             return $this;
