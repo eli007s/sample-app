@@ -183,7 +183,7 @@
 				if ($this->_routed === true)
 				{
 					$this->_route += $this->_route($controller, $action, $arguments);
-echo '<pre>', print_r($this->_route, true), '</pre>';exit;
+
 					$stack  = array();
 					$config = JXP_Config::load(getcwd() . DS . 'apps' . DS . JXP_App::loaded() . DS . 'config');
 
