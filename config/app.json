@@ -1,0 +1,74 @@
+{
+  "apps" : {
+
+    "sample" : {
+
+      "import"      : "setting-name",
+      "namespace"   : "",
+      "init"        : {
+        "disabled" : true,
+        "start"   : {
+          "route"    : "/index/domain",
+          "redirect" : "http://google.com",
+          "call"     : {
+
+            "namespace" : "",
+            "class"     : "",
+            "method"    : "",
+            "arguments" : [1, 2]
+          }
+        },
+        "end"   : ""
+      },
+      "database"    : { "::use" : "database-name" },
+      "route"       : {},
+      "view"        : { "use" : "smarty", "smarty" : {}, "twig" : {}, "dwoo" : {}, "sapphire" : {} },
+      "error"       : {},
+      "sessions"    : {"":""},
+      "invoked" : [{
+        "controller" : {
+
+          "namespace" : "",
+          "name"      : "index",
+          "init"      : {
+            "start" : {
+              "cmd"  : "echo 'hello world - here';",
+              "call"     : {
+
+                "namespace" : "",
+                "class"     : "",
+                "method"    : "",
+                "arguments" : [1, 2]
+              }
+            },
+            "end"   : { "cmd" : "echo 'the world is safe once again';" }
+          },
+          "params" : [],
+          "view"   : { "use" : "smarty", "smarty" : {} }
+        },
+        "action" : {
+
+        }
+      }],
+      "action"    : {},
+      "vendor"    : {},
+      "acl"       : {
+
+        "::default" : {
+
+          "allow" : [ "*" ],
+          "deny"  : [ "*" ]
+        }
+      },
+      "meta"      : {
+
+        "author" : {
+
+          "name"    : "",
+          "email"   : "",
+          "website" : ""
+        }
+      }
+    }
+  }
+}
