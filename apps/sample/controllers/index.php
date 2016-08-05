@@ -6,4 +6,9 @@
 
             echo __CLASS__;
         }
+
+        public function loadedAction() {
+
+            echo 'loaded';
+        }
     }

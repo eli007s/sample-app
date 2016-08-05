@@ -99,6 +99,23 @@
 			}
 		}
 
+		public function root($root = '') {
+
+		    $_route = array_values(array_filter(explode('/', $_SERVER['REQUEST_URI'])));
+
+            $_first  = $_route[0];
+            $_second = trim($root, '/');
+
+            if ($_first == $_second) {
+
+                unset($_route[0]);
+
+                $_SERVER['REQUEST_URI'] = count($_route) > 0 ? implode('/', $_route) : '/';
+            }
+
+            return $this;
+        }
+
 		/**
 		 * @param $app string
 		 * @throws exception
@@ -127,10 +144,14 @@
 		 */
 		public function route($route)
 		{
-			if (!is_null(JXP_App::loaded()))
-				$this->_route = array('string' => $route);
-			else
-				throw new exception ('no app loaded');
+			if (!is_null(JXP_App::loaded())) {
+
+                $this->_route = array('string' => $route);
+
+            } else {
+
+                throw new exception ('no app loaded');
+            }
 
 			return $this;
 		}
@@ -162,7 +183,7 @@
 				if ($this->_routed === true)
 				{
 					$this->_route += $this->_route($controller, $action, $arguments);
-
+echo '<pre>', print_r($this->_route, true), '</pre>';exit;
 					$stack  = array();
 					$config = JXP_Config::load(getcwd() . DS . 'apps' . DS . JXP_App::loaded() . DS . 'config');
 
@@ -271,7 +292,7 @@
 						$this->_init($stack['controller']['init']['start']);
 
 					$c = $stack['controller']['invoke'];
-
+echo '<pre>', print_r($stack, true), '</pre>';exit;
 					if (class_exists($c))
 					{
 						$c = new $c();
