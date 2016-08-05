@@ -305,7 +305,7 @@
 
 					} else {
 
-						//echo 'error!';
+						echo '404 error, class ' . $c . ' does not exist.';
 					}
 
 					if (isset($stack['controller']['init']['end']))
