@@ -294,7 +294,7 @@
 					if (isset($stack['controller']['init']['start']))
 						$this->_init($stack['controller']['init']['start']);
 
-					$c = $stack['controller']['invoke'];
+					$c = str_replace('\\\\', '\\', $stack['controller']['invoke']);
 
 					if (class_exists($c))
 					{
